@@ -191,7 +191,7 @@ const Dashboard = () => {
                   <p className="card_title">GDOTS</p>
                 </div>
                 <div className="card-1 common">
-                  <p className="count">{referralDetails.length}</p>
+                  <p className="count">{(userDetails.currentBalance - 10000) / 1000}</p>
                   <p className="card_title">Team</p>
                 </div>
                 <div className="card-2 common">
