@@ -196,15 +196,15 @@ const Dashboard = () => {
                 </div>
                 <div className="card-2 common">
                   <p className="count">$ {userDetails.paidBalance}</p>
-                  <p className="card_title">Total GDOT Paid</p>
+                  <p className="card_title">GDOT Received</p>
                 </div>
                 <div className="card-3 common">
                   <p className="count">$ {(Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance)).toFixed(2)}</p>
-                  <p className="card_title">Total Team Commission</p>
+                  <p className="card_title">Profits</p>
                 </div>
                 <div className="card-4 common">
                   <p className="count">$ {lockTotalTempAMT.toFixed(2)}</p>
-                  <p className="card_title">Lock Commission</p>
+                  <p className="card_title">Locked Profits</p>
                 </div>
               </div>
 
@@ -228,4 +228,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
