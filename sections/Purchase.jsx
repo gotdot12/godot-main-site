@@ -17,6 +17,7 @@ const Purchase = () => {
     const [plan, setPlan] = useState("Basic");
     const [wallet, setWallet] = useState("");
     const [rate, setRate] = useState(20);
+    const [isLoading, setIsLoading] = useState(false);
     const email = router.query.email;
     const refer = router.query.referredBy;
     const name = router.query.name;
@@ -28,6 +29,7 @@ const Purchase = () => {
     }
 
     const handleSubmit = async () => {
+        setIsLoading(true);
         const res = await fetch("https://godot-main-server.vercel.app/beforePurchase", {
             method: "POST",
             headers: {
@@ -40,6 +42,7 @@ const Purchase = () => {
         const statusCode = res.status;
 
         if (statusCode == 200) {
+            setIsLoading(false);
             setisOpen(2);
         } else {
             alert("User Not Found!!!")
@@ -48,7 +51,9 @@ const Purchase = () => {
 
     return (
         <section className={`${styles.paddings}`} id="explore">
-
+            <div className="loader" style={isLoading ? { visibility: "visible" } : { visibility: "hidden" }}>
+                <span class="spinner spinner--quarter"></span>
+            </div>
             <div className="navbar-slider showw" style={isOpen == 0 ? { visibility: 'visible' } : { visibility: 'hidden' }}>
                 <div className="purchase_card">
                     <div className="nav flex w-[85%] flex-row justify-between">
