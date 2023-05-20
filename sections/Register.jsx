@@ -16,8 +16,10 @@ const Register = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [referred, setReferred] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const registerIt = async () => {
+        setIsLoading(true);
         if (router.query.id != "" && router.query.id != undefined) {
             setReferred(router.query.id);
             console.log("SDgfsdf");
@@ -33,7 +35,7 @@ const Register = () => {
             const statusCode = res.status;
             console.log(statusCode)
             if (statusCode == 200) {
-                alert("User Added!!!")
+                setIsLoading(false);
                 push(`/purchase?email=${email}&referredBy=${router.query.id}&name=${fname}`);
             } else {
                 alert("Error while Adding User!!!")
@@ -51,7 +53,7 @@ const Register = () => {
             const statusCode = res.status;
             console.log(statusCode)
             if (statusCode == 200) {
-                alert("User Added!!!")
+                setIsLoading(false);
                 push(`/purchase?email=${email}&referredBy=${referred}&name=${fname}`);
             } else {
                 alert("Error while Adding User!!!")
@@ -63,6 +65,9 @@ const Register = () => {
 
     return (
         <section className={`${styles.paddings}`} id="explore">
+            <div className="loader" style={isLoading ? { visibility: "visible" } : { visibility: "hidden" }} >
+                <span class="spinner spinner--quarter"></span>
+            </div>
             <TitleText
                 title={<>Register</>}
                 textStyles="text-center"
