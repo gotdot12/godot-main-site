@@ -193,6 +193,9 @@
 .dashboard_title{
   margin-top: -0.75rem;
   line-height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .dashboard_title h1{
@@ -203,7 +206,7 @@
 
 .dashboard_title h2{
   color: #fff;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
@@ -315,6 +318,13 @@
   margin-top: 0.5rem;
 }
 
+.coin{
+  margin-top: -1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 .code{
   font-weight: 900;
   font-size: 2.5rem;
@@ -411,6 +421,11 @@
   margin-bottom: 2rem;
 }
 
+.com-size{
+  width: 40%;
+  background-color: rgb(255, 78, 78);
+}
+
 
 @media only screen and (max-width: 30em) {
   .form{
@@ -485,7 +500,7 @@
   }
 
   .dashboard_title h2{
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 50%;
   }
 }
