@@ -426,6 +426,47 @@
   background-color: rgb(255, 78, 78);
 }
 
+.loader {
+  display: grid;
+  place-items: center;
+  background-color: #282c34; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10000;
+}
+
+/* Keyframes Spin */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Spinner */
+.spinner {
+	--spinner-color: #fff;
+
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+
+	animation-name: spin;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.spinner--quarter {
+	width: 48px;
+	border: 5px solid var(--spinner-color);
+	border-top-color: transparent;
+
+	animation-duration: 1s;
+}
 
 @media only screen and (max-width: 30em) {
   .form{
