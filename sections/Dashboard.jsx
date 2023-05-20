@@ -23,6 +23,7 @@ const Dashboard = () => {
     Gold: 0,
     Platinum: 0
   });
+  const [totalCoinReceivable, setTotalCoinReceivable] = useState(0);
 
   const plans = [
     {
@@ -56,6 +57,40 @@ const Dashboard = () => {
     getUser(data);
     return () => { };
   }, []);
+
+  useEffect(() => {
+    // get Total Coin Receivable Value
+
+    let totalCoin = 0;
+
+
+    userPlans.map((elem) => {
+      switch (elem) {
+        case "Basic":
+          totalCoin = totalCoinReceivable + (20 / 0.000004);
+          setTotalCoinReceivable(totalCoin)
+          break;
+        case "Bronze":
+          totalCoin = totalCoinReceivable + (50 / 0.000004);
+          setTotalCoinReceivable(totalCoin)
+          break;
+        case "Silver":
+          totalCoin = totalCoinReceivable + (100 / 0.000004);
+          setTotalCoinReceivable(totalCoin)
+          break;
+        case "Gold":
+          totalCoin = totalCoinReceivable + (200 / 0.000004);
+          setTotalCoinReceivable(totalCoin)
+          break;
+        case "Platinum":
+          totalCoin = totalCoinReceivable + (500 / 0.000004);
+          setTotalCoinReceivable(totalCoin)
+          break;
+      }
+      console.log(totalCoin);
+    })
+    return () => { };
+  }, [userDetails]);
 
   const getUser = async (email) => {
     const getUser = await fetch("https://godot-main-server.vercel.app/getUser", {
@@ -113,6 +148,7 @@ const Dashboard = () => {
   //calculating lock commision
 
   var lockTotalTempAMT = 0;
+
   tempArray.map((elem) => {
     lockTotalTempAMT += elem.commission;
   })
@@ -131,7 +167,8 @@ const Dashboard = () => {
             <motion.nav
               initial="hidden"
               whileInView="show"
-              className={`${styles.xPaddings} py-8 relative`}
+              style={{ paddingTop: "2rem" }}
+              className={`${styles.xPaddings} relative`}
             >
               <div className={active ? "navbar-slider showw" : "navbar-slider"}>
                 <div className={active ? "slider show" : "slider"}>
@@ -143,16 +180,19 @@ const Dashboard = () => {
                   <ul>
                     {/* <li>More Information</li> */}
                     {/* <li>Withdrawal Page</li> */}
-                    <li style={userDetails.currentPlans == 0 ? {marginBottom: "2rem"} : {display: 'none'}} onClick={() => { push(`/purchase?email=${userDetails.email}&referredBy=${localStorage.getItem("refer")}&name=${userDetails.name}&id=guest`) }}>SEED ROUND</li>
+                    <li style={userDetails.currentPlans == 0 ? { marginBottom: "2rem" } : { display: 'none' }} onClick={() => { push(`/purchase?email=${userDetails.email}&referredBy=${localStorage.getItem("refer")}&name=${userDetails.name}&id=guest`) }}>SEED ROUND</li>
                     <li onClick={() => { handleLogout() }}>Log Out</li>
                   </ul>
                 </div>
               </div>
               <div className="absolute w-[50%] inset-0 gradient-01" />
               <div className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}>
-                <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white">
-                  GODOT
-                </h2>
+                <img
+                  src="/1.png"
+                  alt="logo"
+                  className="w-[3rem] h-[3rem] object-contain"
+                  style={{ cursor: "pointer", zIndex: "1000" }}
+                />
                 <div></div>
                 <img
                   src="/menu.svg"
@@ -170,9 +210,42 @@ const Dashboard = () => {
               whileInView="show"
               className={`${styles.xPaddings} py-8 relative`}
             >
+              <div className="error_msg" style={{ marginBottom: "3rem" }}>
+                <div class="nft com-size">
+                  <div class='creator'>
+                    <div className='first'>
+                      <p className='subtitle'>Locked Profit will be unlock soon.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="dashboard_title">
-                <h1>Welcome</h1>
-                <h2>{userDetails.name}</h2>
+                <div>
+                  <h1>Welcome</h1>
+                  <h2>{userDetails.name}</h2>
+                </div>
+
+                <div class="nft">
+                  <div class='creator'>
+                    <div className='first'>
+                      <p className='subtitle'>Max Receivable GODOT</p>
+                      <p className='coin'>{totalCoinReceivable + userDetails.currentBalance}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="nft">
+                <div class='creator'>
+                  <div className='first'>
+                    <p className='subtitle'>Share your referral link and start earning GODOT.</p>
+                  </div>
+                  <div className='second flex flex-row justify-between'>
+                    <p className="code">{userDetails.referCode}</p>
+                    <p className="btn-grad" onClick={() => { navigator.clipboard.writeText(`www.godotnetwork.com/register?id=${userDetails.referCode}`) }} >Copy Invite Link</p>
+                  </div>
+                </div>
               </div>
             </motion.nav>
 
@@ -183,7 +256,7 @@ const Dashboard = () => {
               className={`${styles.xPaddings} py-8 relative`}
             >
               <div className="dashboard_title mt-1 mb-7">
-                <h2 style={{ fontSize: "2.5rem" }}>Your stats</h2>
+                <h2 style={{ fontSize: "2rem" }}>Your stats</h2>
               </div>
               <div className="stats_card">
                 <div className="card-0 common">
@@ -205,18 +278,6 @@ const Dashboard = () => {
                 <div className="card-4 common">
                   <p className="count">$ {lockTotalTempAMT.toFixed(2)}</p>
                   <p className="card_title">Locked Profits</p>
-                </div>
-              </div>
-
-              <div class="nft">
-                <div class='creator'>
-                  <div className='first'>
-                    <p className='subtitle'>Share your referral link and start earning GODOT.</p>
-                  </div>
-                  <div className='second flex flex-row justify-between'>
-                    <p className="code">{userDetails.referCode}</p>
-                    <p className="btn-grad" onClick={() => { navigator.clipboard.writeText(`www.godotnetwork.com/register?id=${userDetails.referCode}`) }} >Copy Invite Link</p>
-                  </div>
                 </div>
               </div>
             </motion.nav>
