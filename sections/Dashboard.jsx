@@ -24,6 +24,7 @@ const Dashboard = () => {
     Platinum: 0
   });
   const [totalCoinReceivable, setTotalCoinReceivable] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const plans = [
     {
@@ -93,6 +94,7 @@ const Dashboard = () => {
   }, [userDetails]);
 
   const getUser = async (email) => {
+    setIsLoading(true);
     const getUser = await fetch("https://godot-main-server.vercel.app/getUser", {
       method: "POST",
       headers: {
@@ -135,6 +137,8 @@ const Dashboard = () => {
     setTimeout(() => {
       setLoader(false);
     }, 1000);
+
+    setIsLoading(false);
   }
 
   //filter array
@@ -161,6 +165,9 @@ const Dashboard = () => {
   return (
     <>
       <div className="bg-primary-black" style={{ width: '100%', height: 'auto' }}>
+        <div className="loader" style={isLoading ? { visibility: "visible" } : { visibility: "hidden" }}>
+          <span class="spinner spinner--quarter"></span>
+        </div>
         <div className="relative">
           <div className="gradient-02 z-0" />
           <div className="navbar">
