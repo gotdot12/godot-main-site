@@ -14,8 +14,10 @@ const Login = () => {
     const { push } = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
+        setIsLoading(true);
         const res = await fetch("https://godot-main-server.vercel.app/login", {
             method: "POST",
             headers: {
@@ -31,6 +33,7 @@ const Login = () => {
 
         if (statusCode == 200) {
             localStorage.setItem("status", true);
+            setIsLoading(false);
             push(`/dashboard?email=${email}`)
         } else {
             alert("User Not Found!!!")
@@ -39,6 +42,9 @@ const Login = () => {
 
     return (
         <section className={`${styles.paddings}`} id="explore">
+            <div className="loader" style={isLoading ? { visibility: "visible" } : { visibility: "hidden" }} >
+                <span class="spinner spinner--quarter"></span>
+            </div>
             <TitleText
                 title={<>Login</>}
                 textStyles="text-center"
