@@ -146,7 +146,7 @@ const Purchase = () => {
 
             <p className="btn-grad purchase" style={{ width: "20rem", height: "5rem", fontSize: "1.2rem" }} onClick={() => { index > -1 ? setisOpen(0) : alert("Please select a plan...") }}>Purchase</p>
 
-            {router.query.id == "guest" ? <></> : <p className="btn-grad purchase" style={{ marginTop: "2rem" }} onClick={() => { handleSignInAsGeust() }}>Sign In as a Guest</p>}
+            {router.query.id == "guest" ? <></> : <p className="btn-grad purchase" style={{ marginTop: "2rem" }} onClick={() => { handleSignInAsGeust() }}>Enter For <b>FREE</b></p>}
         </section>
     );
 };
