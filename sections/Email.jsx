@@ -32,7 +32,7 @@ const Email = () => {
 
     const resendIt = async () => {
         setIsLoading(true);
-        const res = await fetch("http://localhost:8002/resend", {
+        const res = await fetch("https://godot-main-server.vercel.app/resend", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -53,7 +53,7 @@ const Email = () => {
 
     const handleSubmit = async () => {
         setIsLoading(true);
-        const res = await fetch("http://localhost:8002/verify", {
+        const res = await fetch("https://godot-main-server.vercel.app/verify", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
