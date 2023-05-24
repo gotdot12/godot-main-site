@@ -144,9 +144,9 @@ const Purchase = () => {
                 </div>
             </div>
 
-            <p className="btn-grad purchase" style={{ width: "20rem", height: "5rem", fontSize: "1.2rem", backgroundImage: "linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)" }} onClick={() => { index > -1 ? setisOpen(0) : alert("Please select a plan...") }}>Purchase</p>
+            <p className="btn-grad purchase" style={{ width: "20rem", height: "5rem", fontSize: "1.2rem" }} onClick={() => { index > -1 ? setisOpen(0) : alert("Please select a plan...") }}>Purchase</p>
 
-            {router.query.id == "guest" ? <></> : <p className="btn-grad purchase" style={{ marginTop: "2rem" }} onClick={() => { handleSignInAsGeust() }}>Enter For FREE</p>}
+            {router.query.id == "guest" ? <></> : <p className="btn-grad purchase" style={{ marginTop: "2rem", backgroundImage: "linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)" }} onClick={() => { handleSignInAsGeust() }}>Enter For FREE</p>}
         </section>
     );
 };
