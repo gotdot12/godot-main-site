@@ -198,7 +198,7 @@ const Dashboard = () => {
                   src="/1.png"
                   alt="logo"
                   className="w-[3rem] h-[3rem] object-contain"
-                  style={{ cursor: "pointer", zIndex: "1000" }}
+                  style={{ cursor: "pointer" }}
                 />
                 <div></div>
                 <img
