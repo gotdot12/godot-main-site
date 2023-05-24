@@ -10,6 +10,7 @@ import Register from './Register';
 import Dashboard from './Dashboard';
 import Purchase from './Purchase';
 import ComingSoon from './ComingSoon';
+import Email from './Email';
 
 export {
   Hero,
@@ -23,5 +24,6 @@ export {
   Register,
   Dashboard,
   Purchase,
-  ComingSoon
+  ComingSoon,
+  Email
 };
