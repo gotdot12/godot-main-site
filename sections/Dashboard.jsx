@@ -27,35 +27,11 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [displayPlan, setdisplayPlan] = useState();
 
-  const plans = [
-    {
-      name: "Basic",
-      prize: 20
-    },
-    {
-      name: "Bronze",
-      prize: 50
-    },
-    {
-      name: "Silver",
-      prize: 100
-    },
-    {
-      name: "Gold",
-      prize: 200
-    },
-    {
-      name: "Platinum",
-      prize: 500
-    },
-  ];
-
   useEffect(() => {
     if (localStorage.getItem("status") == "false") {
       push("/")
     }
-    const urlSearchParams = new URLSearchParams(window.location.search)
-    const data = urlSearchParams.get('email')
+    const data = localStorage.getItem("email");
     getUser(data);
     return () => { };
   }, []);
@@ -64,8 +40,6 @@ const Dashboard = () => {
     // get Total Coin Receivable Value
 
     let totalCoin = 0;
-
-
     userPlans.map((elem) => {
       switch (elem) {
         case "Basic":
@@ -89,7 +63,6 @@ const Dashboard = () => {
           setTotalCoinReceivable(totalCoin)
           break;
       }
-      console.log(totalCoin);
     })
     return () => { };
   }, [userDetails]);
@@ -144,22 +117,34 @@ const Dashboard = () => {
   }
   //filter array
 
-  var removePlan = userPlans;
-  var tempArray = referralDetails;
-  for (let i = 0; i < removePlan.length; i++) {
-    tempArray = tempArray.filter((item) => item.plan !== removePlan[i]);
-  }
+  const result = referralDetails.filter((elem, index) => {
+    if (displayPlan == "Basic") {
+      return elem.plan == "Basic"
+    } else if (displayPlan == "Bronze") {
+      return elem.plan == "Basic" || elem.plan == "Bronze"
+    } else if (displayPlan == "Silver") {
+      return elem.plan == "Basic" || elem.plan == "Bronze" || elem.plan == "Silver"
+    } else if (displayPlan == "Gold") {
+      return elem.plan == "Basic" || elem.plan == "Bronze" || elem.plan == "Silver" || elem.plan == "Gold"
+    } else if (displayPlan == "Platinum") {
+      return elem
+    }
+  });
 
   //calculating lock commision
 
   var lockTotalTempAMT = 0;
+  var filterTotal = 0;
 
-  tempArray.map((elem) => {
-    lockTotalTempAMT += elem.commission;
+  result.map((elem) => {
+    filterTotal += elem.commission;
   })
+
+  lockTotalTempAMT = totalAMT.toFixed(2) - filterTotal;
 
   const handleLogout = () => {
     localStorage.setItem("status", false)
+    localStorage.removeItem("email")
     push("/")
   }
 
@@ -218,7 +203,7 @@ const Dashboard = () => {
                 whileInView="show"
                 className={`${styles.xPaddings} py-8 relative`}
               >
-                <div className="error_msg" style={{ marginBottom: "3rem" }}>
+                {/* <div className="error_msg" style={{ marginBottom: "3rem" }}>
                   <div class="nft com-size">
                     <div class='creator'>
                       <div className='first'>
@@ -226,7 +211,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="dashboard_title">
                   <div>
@@ -284,7 +269,19 @@ const Dashboard = () => {
                     <p className="card_title">Profits</p>
                   </div>
                   <div className="card-4 common">
-                    <p className="count">$ {lockTotalTempAMT.toFixed(2)}</p>
+                    <svg className='i-btn' onClick={() => { push("/faq") }} xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24">
+                      <title />
+                      <g id="Complete">
+                        <g id="info-circle">
+                          <g>
+                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="12" y2="16" />
+                            <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="8" />
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <p className="count">$ {lockTotalTempAMT}</p>
                     <p className="card_title">Locked Profits</p>
                   </div>
                 </div>
