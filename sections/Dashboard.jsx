@@ -203,15 +203,17 @@ const Dashboard = () => {
                 whileInView="show"
                 className={`${styles.xPaddings} py-8 relative`}
               >
-                {/* <div className="error_msg" style={{ marginBottom: "3rem" }}>
-                  <div class="nft com-size">
+                <div className="dashboard_title margin_bottom">
+                  <div class="nft" style={{backgroundColor: "rgb(149, 236, 149)"}}>
                     <div class='creator'>
                       <div className='first'>
-                        <p className='subtitle'>Locked Profit will be unlock soon.</p>
+                        <p className='subtitle'>$GDOT Price</p>
+                        <p className='coin'>0.000004</p>
                       </div>
                     </div>
                   </div>
-                </div> */}
+                  <div></div>
+                </div>
 
                 <div className="dashboard_title">
                   <div>
