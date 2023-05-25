@@ -432,8 +432,9 @@ input[type=number] {
   margin-bottom: 2rem;
 }
 
-.com-size{
-  width: 40%;
+
+
+.error_msg{
   background-color: rgb(255, 78, 78);
 }
 
@@ -486,7 +487,6 @@ input[type=number] {
 	width: 48px;
 	border: 5px solid var(--spinner-color);
 	border-top-color: transparent;
-
 	animation-duration: 1s;
 }
 
@@ -587,6 +587,10 @@ input[type=number] {
 
   .qr_code{
     display: none;
+  }
+
+  .margin_bottom{
+    margin-bottom: 3rem;
   }
 
 }
