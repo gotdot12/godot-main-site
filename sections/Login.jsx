@@ -37,7 +37,7 @@ const Login = () => {
             setIsLoading(false);
             push(`/dashboard`)
         } else {
-            alert("User Not Found!!!")
+            alert("Wrong Email or Password!!!")
         }
     }
 
