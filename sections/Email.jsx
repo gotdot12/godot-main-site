@@ -13,6 +13,7 @@ const Email = () => {
     const [code, setCode] = useState();
     const [showResendBtn, setShowResendBtn] = useState(0);
     const email = router.query.email;
+    const referred = router.query.referredBy;
 
     useEffect(() => {
         countIt()
@@ -59,7 +60,7 @@ const Email = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email, code
+                email, code, referred
             })
         })
         const statusCode = res.status;
@@ -86,7 +87,7 @@ const Email = () => {
 
             <div className="form" style={{ margin: "0 auto", marginTop: "3rem" }}>
                 <input type="number" placeholder='Verification Code' style={{ marginBottom: "0" }} onChange={(e) => { setCode(e.target.value) }} />
-                {showResendBtn > 30 ? <p className="register_btn"><span onClick={() => {resendIt()}}>Resend Code</span></p> : <p className="register_btn">Resend Code in {showResendBtn} seconds</p>}
+                {showResendBtn > 30 ? <p className="register_btn"><span onClick={() => {resendIt()}}>Resend Code</span></p> : <p className="register_btn">Resend Code in {30 - showResendBtn} seconds</p>}
                 <button onClick={handleSubmit}>Verify</button>
             </div>
         </section>
