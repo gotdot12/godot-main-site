@@ -9,6 +9,17 @@
   font-family: "Eudoxus Sans", sans-serif;
   scroll-behavior: smooth;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 .gradient-01 {
   background-image: linear-gradient(
@@ -438,6 +449,17 @@
   z-index: 10000;
 }
 
+.common{
+  position: relative;
+}
+
+.i-btn{
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  cursor: pointer;
+}
+
 /* Keyframes Spin */
 @keyframes spin {
 	from {
@@ -469,6 +491,14 @@
 }
 
 @media only screen and (max-width: 30em) {
+  .card_title{
+    font-size: 2rem;
+  }
+
+  .count{
+    font-size: 1.5rem;
+  }
+
   .form{
     width: 75%;
     position: absolute;
@@ -554,4 +584,9 @@
     flex-direction: column;
     align-items: start;
   }
+
+  .qr_code{
+    display: none;
+  }
+
 }
