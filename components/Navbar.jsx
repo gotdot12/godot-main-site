@@ -28,7 +28,7 @@ const Navbar = () => {
         <img
           src="/1.png"
           alt="logo"
-          className="w-[3rem] h-[3rem] object-contain"
+          className="w-[5rem] h-[5rem] object-contain"
           style={{ cursor: "pointer", zIndex: "1000" }}
         />
         <img
