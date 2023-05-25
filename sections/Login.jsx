@@ -37,6 +37,7 @@ const Login = () => {
             setIsLoading(false);
             push(`/dashboard`)
         } else {
+            setIsLoading(false);
             alert("Wrong Email or Password!!!")
         }
     }
