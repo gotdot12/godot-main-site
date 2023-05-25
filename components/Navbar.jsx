@@ -26,14 +26,11 @@ const Navbar = () => {
       <div className="absolute w-[50%] inset-0 gradient-01" />
       <div className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}>
         <img
-          src="/search.svg"
-          alt="search"
-          className="w-[24px] h-[24px] object-contain"
-          style={{ visibility: 'hidden' }}
+          src="/1.png"
+          alt="logo"
+          className="w-[3rem] h-[3rem] object-contain"
+          style={{ cursor: "pointer", zIndex: "1000" }}
         />
-        <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white">
-          GODOT
-        </h2>
         <img
           src="/menu.svg"
           alt="menu"
