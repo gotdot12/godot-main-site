@@ -140,7 +140,7 @@ const Dashboard = () => {
     filterTotal += elem.commission;
   })
 
-  lockTotalTempAMT = totalAMT.toFixed(2) - filterTotal;
+  lockTotalTempAMT = totalAMT.toFixed(2) - filterTotal.toFixed(2);
 
   const handleLogout = () => {
     localStorage.setItem("status", false)
