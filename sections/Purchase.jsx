@@ -23,9 +23,10 @@ const Purchase = () => {
     const name = router.query.name;
 
     const handleSignInAsGeust = async () => {
-        push(`/dashboard?email=${email}`)
         localStorage.setItem("refer", refer)
         localStorage.setItem("status", true)
+        localStorage.setItem("email", email)
+        push(`/dashboard`)
     }
 
     const handleSubmit = async () => {
@@ -112,7 +113,7 @@ const Purchase = () => {
 
                     <p className="disclaimer">Note: Please wait for 24 hour untill we verify your transaction till then sit back and relax.</p>
 
-                    <p className="btn-grad" onClick={() => { localStorage.setItem("status", true), push(`/dashboard?email=${email}`) }}>Continue</p>
+                    <p className="btn-grad" onClick={() => { localStorage.setItem("status", true), localStorage.setItem("email", email), push(`/dashboard`) }}>Continue</p>
                 </div>
             </div>
 
