@@ -33,8 +33,9 @@ const Login = () => {
 
         if (statusCode == 200) {
             localStorage.setItem("status", true);
+            localStorage.setItem("email", email)
             setIsLoading(false);
-            push(`/dashboard?email=${email}`)
+            push(`/dashboard`)
         } else {
             alert("User Not Found!!!")
         }
