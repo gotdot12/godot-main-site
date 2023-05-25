@@ -23,13 +23,13 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="absolute w-[50%] inset-0 gradient-01" />
+      <div className="absolute w-[50%] inset-0 " />
       <div className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}>
         <img
           src="/1.png"
           alt="logo"
           className="w-[5rem] h-[5rem] object-contain"
-          style={{ cursor: "pointer", zIndex: "1000" }}
+          style={{ cursor: "pointer" }}
         />
         <img
           src="/menu.svg"
