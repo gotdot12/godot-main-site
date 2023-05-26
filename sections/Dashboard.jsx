@@ -204,11 +204,11 @@ const Dashboard = () => {
                 className={`${styles.xPaddings} py-8 relative`}
               >
                 <div className="dashboard_title margin_bottom">
-                  <div class="nft" style={{backgroundColor: "rgb(149, 236, 149)"}}>
+                  <div class="nft" style={{ backgroundColor: "rgb(149, 236, 149)", padding: "0" }}>
                     <div class='creator'>
                       <div className='first'>
-                        <p className='subtitle'>$GDOT Price</p>
-                        <p className='coin'>0.000004</p>
+                        <p className='subtitle'>GDOT Price</p>
+                        <p className='coin'>$ 0.000004</p>
                       </div>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ const Dashboard = () => {
                     <div class='creator'>
                       <div className='first'>
                         <p className='subtitle'>Max Receivable GODOT</p>
-                        <p className='coin'>{totalCoinReceivable + userDetails.currentBalance}</p>
+                        <p className='coin'>{(totalCoinReceivable + userDetails.currentBalance + ((Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance)).toFixed(2) / 0.000004))}</p>
                       </div>
                     </div>
                   </div>
