@@ -29,9 +29,12 @@ const Login = () => {
         })
         const result = await res.json();
         const statusCode = res.status;
-        console.log(statusCode)
+        console.log(result)
 
-        if (statusCode == 200) {
+        if (statusCode == 421) {
+            alert("You are not registered!!!")
+            push(`/register`);
+        } else if (statusCode == 200) {
             localStorage.setItem("status", true);
             localStorage.setItem("email", email)
             setIsLoading(false);
