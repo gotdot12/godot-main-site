@@ -226,6 +226,7 @@ const Dashboard = () => {
                       <div className='first'>
                         <p className='subtitle'>Max Receivable GODOT</p>
                         <p className='coin'>{(totalCoinReceivable + userDetails.currentBalance + ((Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance)).toFixed(2) / 0.000004))}</p>
+                        <p className='coin' style={{color: "lightgreen"}}>({((totalCoinReceivable + userDetails.currentBalance + ((Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance)).toFixed(2) / 0.000004)) * 0.000004).toFixed(2)} $)</p>
                       </div>
                     </div>
                   </div>
@@ -264,7 +265,7 @@ const Dashboard = () => {
                   </div>
                   <div className="card-2 common">
                     <p className="count">$ {userDetails.paidBalance}</p>
-                    <p className="card_title">GDOT Received</p>
+                    <p className="card_title">GDOT Withdrawal</p>
                   </div>
                   <div className="card-3 common">
                     <p className="count">$ {(Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance)).toFixed(2)}</p>
