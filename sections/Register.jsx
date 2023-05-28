@@ -25,7 +25,7 @@ const Register = () => {
             setIsLoading(true);
             if (router.query.id != "" && router.query.id != undefined) {
                 setReferred(router.query.id);
-                const res = await fetch("https://godot-main-server.vercel.app/register", {
+                const res = await fetch("http://localhost:8002/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -36,14 +36,16 @@ const Register = () => {
                 })
                 const statusCode = res.status;
                 console.log(statusCode)
-                if (statusCode == 200) {
+                if (statusCode == 421) {
+                    push(`/email?email=${email}&referredBy=${router.query.id}&name=${fname}`);
+                } else if (statusCode == 200) {
                     setIsLoading(false);
                     push(`/email?email=${email}&referredBy=${router.query.id}&name=${fname}`);
                 } else {
                     alert("Error while Adding User!!!")
                 }
             } else if (referred != "" && referred != undefined) {
-                const res = await fetch("https://godot-main-server.vercel.app/register", {
+                const res = await fetch("http://localhost:8002/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -54,7 +56,9 @@ const Register = () => {
                 })
                 const statusCode = res.status;
                 console.log(statusCode)
-                if (statusCode == 200) {
+                if (statusCode == 421) {
+                    push(`/email?email=${email}&referredBy=${referred}&name=${fname}`);
+                } else if (statusCode == 200) {
                     setIsLoading(false);
                     push(`/email?email=${email}&referredBy=${referred}&name=${fname}`);
                 } else {
