@@ -25,7 +25,7 @@ const Register = () => {
             setIsLoading(true);
             if (router.query.id != "" && router.query.id != undefined) {
                 setReferred(router.query.id);
-                const res = await fetch("http://localhost:8002/register", {
+                const res = await fetch("https://godot-main-server.vercel.app/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -45,7 +45,7 @@ const Register = () => {
                     alert("Error while Adding User!!!")
                 }
             } else if (referred != "" && referred != undefined) {
-                const res = await fetch("http://localhost:8002/register", {
+                const res = await fetch("https://godot-main-server.vercel.app/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
