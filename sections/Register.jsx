@@ -22,7 +22,7 @@ const Register = () => {
     const registerIt = async () => {
         if (password != cpassword) {
             alert("Password doesn't match!!")
-        } else if (email.indexOf(' ') >= 0 || password.indexOf(' ') >= 0 || referred.indexOf(' ') >= 0) {
+        } else if (email.indexOf(' ') >= 0 || password.indexOf(' ') >= 0) {
             alert("Please remove space from your input field...")
         } else {
             setIsLoading(true);
