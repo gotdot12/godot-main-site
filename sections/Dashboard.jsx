@@ -145,6 +145,7 @@ const Dashboard = () => {
   const handleLogout = () => {
     localStorage.setItem("status", false)
     localStorage.removeItem("email")
+    localStorage.removeItem("refer")
     push("/")
   }
 
@@ -172,7 +173,7 @@ const Dashboard = () => {
                     </div>
                     <ul>
                       {/* <li>More Information</li> */}
-                      {/* <li>Withdrawal Page</li> */}
+                      <li style={userDetails.currentPlans != 0 ? { marginBottom: "2rem" } : { display: 'none' }} onClick={() => { push(`/multipurchase`) }}>SEED ROUND</li>
                       <li style={userDetails.currentPlans == 0 ? { marginBottom: "2rem" } : { display: 'none' }} onClick={() => { push(`/purchase?email=${userDetails.email}&referredBy=${localStorage.getItem("refer")}&name=${userDetails.name}&id=guest`) }}>SEED ROUND</li>
                       <li onClick={() => { handleLogout() }}>Log Out</li>
                     </ul>
