@@ -178,7 +178,7 @@ input[type=number] {
   outline: none;
   border: none;
   border-radius: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .form p{
