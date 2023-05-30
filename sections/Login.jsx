@@ -29,7 +29,8 @@ const Login = () => {
         })
         const result = await res.json();
         const statusCode = res.status;
-        console.log(result)
+        // console.log(result.user)
+        const refferdBy = result.user.referredBy
 
         if (statusCode == 421) {
             alert("You are not registered!!!")
@@ -37,6 +38,8 @@ const Login = () => {
         } else if (statusCode == 200) {
             localStorage.setItem("status", true);
             localStorage.setItem("email", email)
+            localStorage.setItem("refer", refferdBy[refferdBy.length - 1])
+            console.log(refferdBy[refferdBy.length - 1]);
             setIsLoading(false);
             push(`/dashboard`)
         } else {
