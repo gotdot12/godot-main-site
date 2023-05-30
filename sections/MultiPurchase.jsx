@@ -154,22 +154,22 @@ const MultiPurchase = () => {
                 {!userPlans.includes("Bronze") ? <div className="card-4 common" onClick={() => { setindex(1); setPlan("Bronze"); setRate(50); }} style={index == 1 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Bronze</p>
                     <p className="count">50 BUSD</p>
-                    <p>Eligible for level upto 2 reward</p>
+                    <p>Eligible for upto level 2 reward</p>
                 </div> : <></>}
                 {!userPlans.includes("Silver") ? <div className="card-0 common" onClick={() => { setindex(2); setPlan("Silver"); setRate(100); }} style={index == 2 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Silver</p>
                     <p className="count">100 BUSD</p>
-                    <p>Eligible for level upto 3 reward</p>
+                    <p>Eligible for upto level 3 reward</p>
                 </div> : <></>}
                 {!userPlans.includes("Gold") ? <div className="card-4 common" onClick={() => { setindex(3); setPlan("Gold"); setRate(200); }} style={index == 3 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Gold</p>
                     <p className="count">200 BUSD</p>
-                    <p>Eligible for level upto 4 reward</p>
+                    <p>Eligible for upto level 4 reward</p>
                 </div> : <></>}
                 {!userPlans.includes("Platinum") ? <div className="card-2 common" onClick={() => { setindex(4); setPlan("Platinum"); setRate(500); }} style={index == 4 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Platinum</p>
                     <p className="count">500 BUSD</p>
-                    <p>Eligible for level upto 5 reward</p>
+                    <p>Eligible for upto level 5 reward</p>
                 </div> : <></>}
             </div>
 
