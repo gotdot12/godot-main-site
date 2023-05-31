@@ -29,22 +29,25 @@ const Login = () => {
         })
         const result = await res.json();
         const statusCode = res.status;
-        // console.log(result.user)
-        const refferdBy = result.user.referredBy
+        console.log(result.status)
 
         if (statusCode == 421) {
             alert("You are not registered!!!")
             push(`/register`);
         } else if (statusCode == 200) {
             localStorage.setItem("status", true);
-            localStorage.setItem("email", email)
+            localStorage.setItem("email", email);
+            const refferdBy = result.user.referredBy
             localStorage.setItem("refer", refferdBy[refferdBy.length - 1])
-            console.log(refferdBy[refferdBy.length - 1]);
+            // console.log(refferdBy[refferdBy.length - 1]);
             setIsLoading(false);
             push(`/dashboard`)
+        } else if (statusCode == undefined) {
+            setIsLoading(false);
+            alert("Wrong Email or Password!!!");
         } else {
             setIsLoading(false);
-            alert("Wrong Email or Password!!!")
+            alert("Wrong Email or Password!!!");
         }
     }
 
