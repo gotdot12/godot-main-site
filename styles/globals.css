@@ -255,12 +255,12 @@ input[type=number] {
 }
 
 .card_title{
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .count{
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 800;
 }
 
