@@ -20,9 +20,7 @@ const MultiPurchase = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [userPlans, setUserPlans] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
-    const email = router.query.email;
-    const refer = router.query.referredBy;
-    const name = router.query.name;
+    let arr = [];
 
     useEffect(() => {
         if (localStorage.getItem("status") == "false") {
@@ -46,8 +44,23 @@ const MultiPurchase = () => {
         })
 
         const result = await getUser.json();
-        setUserPlans(result.plans)
+        let plan = result.plans[result.plans.length - 1];
         setUserDetails(result.user)
+        
+        if (plan == "Basic") {
+            arr = ["Bronze", "Silver", "Gold", "Platinum"]
+        } else if (plan == "Bronze") {
+            arr = ["Silver", "Gold", "Platinum"]
+        } else if (plan == "Silver") {
+            arr = ["Gold", "Platinum"]
+        } else if (plan == "Gold") {
+            arr = ["Platinum"]
+        } else if (plan == "Platinum") {
+            arr = []
+        }
+
+        setUserPlans(arr)
+
         setIsLoading(false);
     }
 
@@ -146,35 +159,36 @@ const MultiPurchase = () => {
             />
             <h2 style={{ color: "#fff", fontSize: "1.2rem", margin: "2rem auto", marginBottom: "-3rem", textAlign: "center" }}>Select your desired amount and click on the <b>PURCHASE</b> button at the bottom of the page. </h2>
             <div className="stats_card" style={{ marginTop: '8rem' }}>
-                {!userPlans.includes("Basic") ? <div className="card-1 common" onClick={() => { setindex(0); setPlan("Basic"); setRate(20); }} style={index == 0 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
+                {userPlans.includes("Basic") ? <div className="card-1 common" onClick={() => { setindex(0); setPlan("Basic"); setRate(20); }} style={index == 0 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Basic</p>
                     <p className="count">20 BUSD</p>
                     <p>Eligible for level 1 reward</p>
                 </div> : <></>}
-                {!userPlans.includes("Bronze") ? <div className="card-4 common" onClick={() => { setindex(1); setPlan("Bronze"); setRate(50); }} style={index == 1 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
+                {userPlans.includes("Bronze") ? <div className="card-4 common" onClick={() => { setindex(1); setPlan("Bronze"); setRate(50); }} style={index == 1 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Bronze</p>
                     <p className="count">50 BUSD</p>
                     <p>Eligible for upto level 2 reward</p>
                 </div> : <></>}
-                {!userPlans.includes("Silver") ? <div className="card-0 common" onClick={() => { setindex(2); setPlan("Silver"); setRate(100); }} style={index == 2 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
+                {userPlans.includes("Silver") ? <div className="card-0 common" onClick={() => { setindex(2); setPlan("Silver"); setRate(100); }} style={index == 2 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Silver</p>
                     <p className="count">100 BUSD</p>
                     <p>Eligible for upto level 3 reward</p>
                 </div> : <></>}
-                {!userPlans.includes("Gold") ? <div className="card-4 common" onClick={() => { setindex(3); setPlan("Gold"); setRate(200); }} style={index == 3 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
+                {userPlans.includes("Gold") ? <div className="card-4 common" onClick={() => { setindex(3); setPlan("Gold"); setRate(200); }} style={index == 3 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Gold</p>
                     <p className="count">200 BUSD</p>
                     <p>Eligible for upto level 4 reward</p>
                 </div> : <></>}
-                {!userPlans.includes("Platinum") ? <div className="card-2 common" onClick={() => { setindex(4); setPlan("Platinum"); setRate(500); }} style={index == 4 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
+                {userPlans.includes("Platinum") ? <div className="card-2 common" onClick={() => { setindex(4); setPlan("Platinum"); setRate(500); }} style={index == 4 ? { height: '25vh' } : { height: '25vh', opacity: '0.2' }}>
                     <p className="card_title">Platinum</p>
                     <p className="count">500 BUSD</p>
                     <p>Eligible for upto level 5 reward</p>
-                </div> : <></>}
+            
+                </div> : <><h2 style={{ color: "#fff", fontSize: "1.7rem", margin: "2rem auto", marginBottom: "-3rem", textAlign: "center" }}>You have already choosed an allocation</h2></>}
             </div>
 
-            <p className="btn-grad purchase" style={{ width: "20rem", height: "5rem", fontSize: "1.2rem" }} onClick={() => { index > -1 ? setisOpen(0) : alert("Please select a plan...") }}>Purchase</p>
-
+            
+            {userPlans.includes("Platinum") ? <p className="btn-grad purchase" style={{ width: "20rem", height: "5rem", fontSize: "1.2rem" }} onClick={() => { index > -1 ? setisOpen(0) : alert("Please select a plan...") }}>Purchase</p> : <></>}
         </section>
     );
 };
