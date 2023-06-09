@@ -156,7 +156,7 @@ const Withdraw = () => {
     const handleSubmit = async () => {
         if (finalAmt >= 10 && finalAmt <= 20) {
             setIsLoading(true);
-            const getUser = await fetch("http://godot-main-server.vercel.app/withdrawalRequest", {
+            const getUser = await fetch("https://godot-main-server.vercel.app/withdrawalRequest", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -173,7 +173,7 @@ const Withdraw = () => {
             }
         } else {
             setIsLoading(true);
-            const getUser = await fetch("http://godot-main-server.vercel.app/withdrawalRequest", {
+            const getUser = await fetch("https://godot-main-server.vercel.app/withdrawalRequest", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
