@@ -315,12 +315,12 @@ const Withdraw = () => {
                     </div>
                     <div className="card-4 common wallet" style={{ height: '25vh' }}>
                         <p className="count">$ {userDetails.paidBalance}</p>
-                        <p className='coin' style={{ color: "lightgreen" }}>{userDetails.paidBalance} $GDOT</p>
+                        <p className='coin' style={{ color: "lightgreen" }}>{userDetails.paidBalance / 0.000004} $GDOT</p>
                         <p className="card_title">Total Profit Paid</p>
                     </div>
                     <div className="card-0 common wallet" style={{ height: '25vh' }}>
                         <p className="count">$ {userDetails.pendingBalance}</p>
-                        <p className='coin' style={{ color: "lightgreen" }}>{userDetails.pendingBalance} $GDOT</p>
+                        <p className='coin' style={{ color: "lightgreen" }}>{userDetails.pendingBalance / 0.000004} $GDOT</p>
                         <p className="card_title">Pending Amount</p>
                     </div>
                 </div>
