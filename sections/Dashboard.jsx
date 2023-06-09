@@ -84,7 +84,6 @@ const Dashboard = () => {
     setdisplayPlan(result.plans[result.plans.length - 1])
     setUserPlans(result.plans)
     setUserDetails(result.user)
-    console.log(result.user);
     setReferralDetails(result.user.commissionDetail);
 
     var temp = 0;
@@ -175,6 +174,7 @@ const Dashboard = () => {
                       {/* <li>More Information</li> */}
                       <li style={userDetails.currentPlans != 0 ? { marginBottom: "2rem" } : { display: 'none' }} onClick={() => { push(`/multipurchase`) }}>SEED ROUND</li>
                       <li style={userDetails.currentPlans == 0 ? { marginBottom: "2rem" } : { display: 'none' }} onClick={() => { push(`/purchase?email=${userDetails.email}&referredBy=${localStorage.getItem("refer")}&name=${userDetails.name}&id=guest`) }}>SEED ROUND</li>
+                      <li style={{ marginBottom: "2rem" }} onClick={() => { push(`/withdraw`) }}>Wallet</li>
                       <li onClick={() => { handleLogout() }}>Log Out</li>
                     </ul>
                   </div>
@@ -269,7 +269,7 @@ const Dashboard = () => {
                     <p className="card_title">GDOT Withdrawal</p>
                   </div>
                   <div className="card-3 common">
-                    <p className="count">$ {(Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance)).toFixed(2)}</p>
+                    <p className="count">$ {(Math.abs(totalAMT - lockTotalTempAMT - userDetails.paidBalance - userDetails.pendingBalance)).toFixed(2)}</p>
                     <p className="card_title">Profits</p>
                   </div>
                   <div className="card-4 common">
