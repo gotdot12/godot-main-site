@@ -154,7 +154,7 @@ const Withdraw = () => {
     }
 
     const handleSubmit = async () => {
-        if (finalAmt >= 10 && finalAmt <= 50) {
+        if (finalAmt >= 10 && finalAmt <= 20) {
             setIsLoading(true);
             const getUser = await fetch("https://godot-main-server.vercel.app/withdrawalRequest", {
                 method: "POST",
@@ -179,7 +179,7 @@ const Withdraw = () => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email: userDetails.email, amount: 50, plan: displayPlan, name: userDetails.name, wallet
+                    email: userDetails.email, amount: 20, plan: displayPlan, name: userDetails.name, wallet
                 })
             })
 
@@ -283,7 +283,7 @@ const Withdraw = () => {
                                 </svg>
                             </div>
                         </div>
-                        <div className="heading grow" style={{ textAlign: 'center', fontSize: "2rem", marginTop: "1rem" }}>Withdrawal Amount: {finalAmt < 50 ? finalAmt : 50} $</div>
+                        <div className="heading grow" style={{ textAlign: 'center', fontSize: "2rem", marginTop: "1rem" }}>Withdrawal Amount: {finalAmt < 20 ? finalAmt : 20} $</div>
 
 
                         <input type="text" placeholder='Enter your wallet address here' onChange={(e) => { setWallet(e.target.value) }} />
