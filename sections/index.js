@@ -11,7 +11,9 @@ import Dashboard from './Dashboard';
 import Purchase from './Purchase';
 import ComingSoon from './ComingSoon';
 import Email from './Email';
+import Faq from './Faq';
 import MultiPurchase from './MultiPurchase';
+import Withdraw from './Withdraw';
 
 export {
   Hero,
@@ -27,5 +29,7 @@ export {
   Purchase,
   ComingSoon,
   Email,
-  MultiPurchase
+  Faq,
+  MultiPurchase,
+  Withdraw
 };
